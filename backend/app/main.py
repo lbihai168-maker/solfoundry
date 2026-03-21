@@ -5,6 +5,7 @@ import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
+from app.api.stats import router as stats_router
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
@@ -232,6 +233,9 @@ app.include_router(contributors_router, prefix="/api")
 
 # Bounties: /api/bounties/*
 app.include_router(bounties_router, prefix="/api")
+
+# Stats: /api/stats/*
+app.include_router(stats_router)
 
 # Notifications: /api/notifications/*
 app.include_router(notifications_router, prefix="/api")
